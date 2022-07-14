@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,34 +31,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+	Color color = Colors.white;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void _generateRandomColor() {
+		setState(() {
+		  Random random = Random();
+			var randomDouble = random.nextDouble();
+			color = Color((randomDouble * 0xFFFFFF).toInt()).withOpacity(1.0);
+		});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+			backgroundColor: color,
       body: GestureDetector(
 				behavior: HitTestBehavior.opaque,
-				onTap: _incrementCounter,
+				onTap: _generateRandomColor,
 				child: Center(
 					child: Column(
 						mainAxisAlignment: MainAxisAlignment.center,
-						children: <Widget>[
-							const Text(
-								'You tapped this many times:',
-							),
-							Text(
-								'$_counter',
-								style: Theme.of(context).textTheme.headline4,
-							),
+						children: const <Widget>[
+							Text('Hey there'),
 						],
 					),
 				),
