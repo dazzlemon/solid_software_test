@@ -2,29 +2,22 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-void main() {
+void main() =>
   runApp(const MyApp());
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) =>
+    const MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
-  }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -33,29 +26,21 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 	Color color = Colors.white;
 
-  void _generateRandomColor() {
-		setState(() {
-		  Random random = Random();
-			color = Color((random.nextInt(0xFFFFFF + 1))).withOpacity(1.0);
-		});
-  }
+  void _generateRandomColor() =>
+		setState(() =>
+			color = Color((Random().nextInt(0xFFFFFF + 1))).withOpacity(1.0)
+		);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) =>
+    Scaffold(
 			backgroundColor: color,
       body: GestureDetector(
 				behavior: HitTestBehavior.opaque,
 				onTap: _generateRandomColor,
-				child: Center(
-					child: Column(
-						mainAxisAlignment: MainAxisAlignment.center,
-						children: const <Widget>[
-							Text('Hey there'),
-						],
-					),
+				child: const Center(
+					child: Text('Hey there'),
 				),
 			),
     );
-  }
 }
