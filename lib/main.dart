@@ -36,8 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _generateRandomColor() {
 		setState(() {
 		  Random random = Random();
-			var randomDouble = random.nextDouble();
-			color = Color((randomDouble * 0xFFFFFF).toInt()).withOpacity(1.0);
+			color = Color((random.nextInt(0xFFFFFF + 1))).withOpacity(1.0);
 		});
   }
 
