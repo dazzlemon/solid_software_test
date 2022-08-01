@@ -25,11 +25,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 	Color color = Colors.white;
+	Color textColor = Colors.black;
 
-  void _generateRandomColor() =>
-		setState(() =>
-			color = Color((Random().nextInt(0xFFFFFF + 1))).withOpacity(1.0)
-		);
+  void _generateRandomColor()  {
+		setState(() {
+			color = Color((Random().nextInt(0xFFFFFF + 1))).withOpacity(1.0);
+			textColor = color.computeLuminance() > 0.5 ? Colors.white
+			                                           : Colors.black;
+		});
+	}
+		
 
   @override
   Widget build(BuildContext context) =>
