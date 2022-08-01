@@ -30,8 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void _generateRandomColor()  {
 		setState(() {
 			color = Color((Random().nextInt(0xFFFFFF + 1))).withOpacity(1.0);
-			textColor = color.computeLuminance() > 0.5 ? Colors.white
-			                                           : Colors.black;
+			textColor = color.computeLuminance() > 0.5 ? Colors.black
+			                                           : Colors.white;
 		});
 	}
 		
@@ -43,8 +43,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: GestureDetector(
 				behavior: HitTestBehavior.opaque,
 				onTap: _generateRandomColor,
-				child: const Center(
-					child: Text('Hey there'),
+				child: Center(
+					child: Text(
+						'Hey there',
+						style: TextStyle(color: textColor),
+					),
 				),
 			),
     );
